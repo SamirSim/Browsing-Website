@@ -23,6 +23,7 @@ for url in urls: #Loop through all the links saved previously
     parentId = url[1] #Get the name of the category
     categories = driver.find_elements_by_xpath('//section[@class="children"]/div/div[@class="cat-item"]/a')
     #Get all the children categories of the current category
+    
     for category in categories: #Loop through all the categories
         tree.create_node(category.text, parentId+category.text, parent=parentId)
         #Create a node with as a name the name of the category, and as ID the name of the father node appended with the category name (I explain why in the attached document), and as parent the root node
