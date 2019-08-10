@@ -3,7 +3,7 @@ from selenium import webdriver #Main driver used
 from treelib import Node, Tree #Tool implementing tree structures
 
 driver = webdriver.Chrome('C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe')
-#Here the path for the webdriver of Chrome is given as parameter, or can be added on the path of the system
+#Here the path for the webdriver of Chrome is given as parameter, or can be added on the path variable of the system
 driver.get('http://curlie.org/')
 
 tree = Tree() #Initialize the tree structure to save the categories
@@ -16,7 +16,7 @@ tree.create_node("Curlie Site", "curlie") #Create the root node, with "curlie" a
 for category in categories: #Loop through all the main categories
     tree.create_node(category.text, category.text, parent="curlie")
     #Create a node with as a name the name of the category, and as ID the name, and as parent the root node
-    urls.append((category.get_attribute("href"), category.text)) #Fill a list of couples of categorie's link and its name
+    urls.append((category.get_attribute("href"), category.text)) #Fill a list of couples of categorie's link and name
 
 for url in urls: #Loop through all the links saved previously
     driver.get(url[0]) #Get the link of the category, and navigate through it using the webdriver
